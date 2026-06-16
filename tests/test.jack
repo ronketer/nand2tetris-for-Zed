@@ -1,0 +1,10 @@
+/** Hello World in Jack */
+class Main {
+    function void main() {
+        var String s;
+        let s = "Hello World";
+        do Output.printString(s);
+        do Output.println();
+        return;
+    }
+}

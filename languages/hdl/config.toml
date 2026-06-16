@@ -1,0 +1,4 @@
+name = "HDL"
+grammar = "hdl"
+path_suffixes = ["hdl"]
+line_comments = ["// "]

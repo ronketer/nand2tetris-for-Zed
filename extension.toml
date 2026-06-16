@@ -1,1 +1,19 @@
-extension.toml: The manifest file containing your unique ID (e.g., nand2tetris), name, version, and repository. Why: Zed reads this to identify what your extension is and who wrote it.
+id = "nand2tetris"
+name = "Nand2Tetris"
+version = "0.1.0"
+schema_version = 1
+authors = ["Ron Keter"]
+description = "Zed language extension for Nand2Tetris, providing Tree-sitter configurations and syntax highlighting for HDL (.hdl), Hack Assembly (.asm), and Jack (.jack)."
+repository = "https://github.com/ronketer/nand2tetris-for-Zed"
+
+[grammars.hdl]
+repository = "https://github.com/quantonganh/tree-sitter-hdl"
+rev = "2199fdf1d302100a53002ea2cf540999119836a0"
+
+[grammars.hack_assembly]
+repository = "https://github.com/soconnor0919/tree-sitter-hack-assembly"
+rev = "a2442f53ea27dc112b6774cb79504a0787a21919"
+
+[grammars.jack]
+repository = "https://github.com/nverno/tree-sitter-jack"
+rev = "1a617413ea92c237bff4cbe7fa67eb3bf4425596"

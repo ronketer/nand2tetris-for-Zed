@@ -1,0 +1,4 @@
+name = "Hack Assembly"
+grammar = "hack_assembly"
+path_suffixes = ["asm"]
+line_comments = ["// "]
