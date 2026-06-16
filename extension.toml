@@ -1,0 +1,1 @@
+extension.toml: The manifest file containing your unique ID (e.g., nand2tetris), name, version, and repository. Why: Zed reads this to identify what your extension is and who wrote it.
