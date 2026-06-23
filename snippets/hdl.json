@@ -1,0 +1,187 @@
+{
+  "Add16(a, b, out)": {
+    "prefix": "Add16",
+    "body": "Add16(a=$1, b=$2, out=$3);$0",
+    "description": "Adds up two 16-bit two's complement values"
+  },
+  "ALU(x, y, zx, nx, zy, ny, f, no, out, zr, ng)": {
+    "prefix": "ALU",
+    "body": "ALU(x=$1, y=$2, zx=$3, nx=$4, zy=$5, ny=$6, f=$7, no=$8, out=$9, zr=$10, ng=$11);$0",
+    "description": "Hack ALU"
+  },
+  "And(a, b, out)": {
+    "prefix": "And",
+    "body": "And(a=$1, b=$2, out=$3);$0",
+    "description": "And gate"
+  },
+  "And16(a, b, out)": {
+    "prefix": "And16",
+    "body": "And16(a=$1, b=$2, out=$3);$0",
+    "description": "16-bit And"
+  },
+  "ARegister(in, load, out)": {
+    "prefix": "ARegister",
+    "body": "ARegister(in=$1, load=$2, out=$3);$0",
+    "description": "Address register (built-in)"
+  },
+  "Bit(in, load, out)": {
+    "prefix": "Bit",
+    "body": "Bit(in=$1, load=$2, out=$3);$0",
+    "description": "1-bit register"
+  },
+  "CPU(inM, instruction, reset, outM, writeM, addressM, pc)": {
+    "prefix": "CPU",
+    "body": "CPU(inM=$1, instruction=$2, reset=$3, outM=$4, writeM=$5, addressM=$6, pc=$7);$0",
+    "description": "Hack CPU"
+  },
+  "DFF(in, out)": {
+    "prefix": "DFF",
+    "body": "DFF(in=$1, out=$2);$0",
+    "description": "Data flip-flop gate (built-in)"
+  },
+  "DMux(in, sel, a, b)": {
+    "prefix": "DMux",
+    "body": "DMux(in=$1, sel=$2, a=$3, b=$4);$0",
+    "description": "Routes the input to one out of two outputs"
+  },
+  "DMux4Way(in, sel, a, b, c, d)": {
+    "prefix": "DMux4Way",
+    "body": "DMux4Way(in=$1, sel=$2, a=$3, b=$4, c=$5, d=$6);$0",
+    "description": "Routes the input to one out of four outputs"
+  },
+  "DMux8Way(in, sel, a, b, c, d, e, f, g, h)": {
+    "prefix": "DMux8Way",
+    "body": "DMux8Way(in=$1, sel=$2, a=$3, b=$4, c=$5, d=$6, e=$7, f=$8, g=$9, h=$10);$0",
+    "description": "Routes the input to one out of 8 outputs"
+  },
+  "DRegister(in, load, out)": {
+    "prefix": "DRegister",
+    "body": "DRegister(in=$1, load=$2, out=$3);$0",
+    "description": "Data register (built-in)"
+  },
+  "HalfAdder(a, b, sum, carry)": {
+    "prefix": "HalfAdder",
+    "body": "HalfAdder(a=$1, b=$2, sum=$3, carry=$4);$0",
+    "description": "Adds up two bits"
+  },
+  "FullAdder(a, b, c, sum, carry)": {
+    "prefix": "FullAdder",
+    "body": "FullAdder(a=$1, b=$2, c=$3, sum=$4, carry=$5);$0",
+    "description": "Adds up three bits"
+  },
+  "Inc16(in, out)": {
+    "prefix": "Inc16",
+    "body": "Inc16(in=$1, out=$2);$0",
+    "description": "Sets out to in + 1"
+  },
+  "Keyboard(out)": {
+    "prefix": "Keyboard",
+    "body": "Keyboard(out=$1);$0",
+    "description": "Keyboard memory map (built-in)"
+  },
+  "Memory(in, load, address, out)": {
+    "prefix": "Memory",
+    "body": "Memory(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "Data memory of the Hack platform (RAM)"
+  },
+  "Mux(a, b, sel, out)": {
+    "prefix": "Mux",
+    "body": "Mux(a=$1, b=$2, sel=$3, out=$4);$0",
+    "description": "Selects between two inputs"
+  },
+  "Mux16(a, b, sel, out)": {
+    "prefix": "Mux16",
+    "body": "Mux16(a=$1, b=$2, sel=$3, out=$4);$0",
+    "description": "Selects between two 16-bit inputs"
+  },
+  "Mux4Way16(a, b, c, d, sel, out)": {
+    "prefix": "Mux4Way16",
+    "body": "Mux4Way16(a=$1, b=$2, c=$3, d=$4, sel=$5, out=$6);$0",
+    "description": "Selects between four 16-bit inputs"
+  },
+  "Mux8Way16(a, b, c, d, e, f, g, h, sel, out)": {
+    "prefix": "Mux8Way16",
+    "body": "Mux8Way16(a=$1, b=$2, c=$3, d=$4, e=$5, f=$6, g=$7, h=$8, sel=$9, out=$10);$0",
+    "description": "Selects between eight 16-bit inputs"
+  },
+  "Nand(a, b, out)": {
+    "prefix": "Nand",
+    "body": "Nand(a=$1, b=$2, out=$3);$0",
+    "description": "Nand gate (built-in)"
+  },
+  "Not(in, out)": {
+    "prefix": "Not",
+    "body": "Not(in=$1, out=$2);$0",
+    "description": "Not gate"
+  },
+  "Not16(in, out)": {
+    "prefix": "Not16",
+    "body": "Not16(in=$1, out=$2);$0",
+    "description": "16-bit Not"
+  },
+  "Or(a, b, out)": {
+    "prefix": "Or",
+    "body": "Or(a=$1, b=$2, out=$3);$0",
+    "description": "Or gate"
+  },
+  "Or16(a, b, out)": {
+    "prefix": "Or16",
+    "body": "Or16(a=$1, b=$2, out=$3);$0",
+    "description": "16-bit Or"
+  },
+  "Or8Way(in, out)": {
+    "prefix": "Or8Way",
+    "body": "Or8Way(in=$1, out=$2);$0",
+    "description": "8-way Or"
+  },
+  "PC(in, load, inc, reset, out)": {
+    "prefix": "PC",
+    "body": "PC(in=$1, load=$2, inc=$3, reset=$4, out=$5);$0",
+    "description": "Program Counter"
+  },
+  "RAM8(in, load, address, out)": {
+    "prefix": "RAM8",
+    "body": "RAM8(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "8-word RAM"
+  },
+  "RAM64(in, load, address, out)": {
+    "prefix": "RAM64",
+    "body": "RAM64(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "64-word RAM"
+  },
+  "RAM512(in, load, address, out)": {
+    "prefix": "RAM512",
+    "body": "RAM512(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "512-word RAM"
+  },
+  "RAM4K(in, load, address, out)": {
+    "prefix": "RAM4K",
+    "body": "RAM4K(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "4K RAM"
+  },
+  "RAM16K(in, load, address, out)": {
+    "prefix": "RAM16K",
+    "body": "RAM16K(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "16K RAM"
+  },
+  "Register(in, load, out)": {
+    "prefix": "Register",
+    "body": "Register(in=$1, load=$2, out=$3);$0",
+    "description": "16-bit register"
+  },
+  "ROM32K(address, out)": {
+    "prefix": "ROM32K",
+    "body": "ROM32K(address=$1, out=$2);$0",
+    "description": "Instruction memory of the Hack platform (ROM, built-in)"
+  },
+  "Screen(in, load, address, out)": {
+    "prefix": "Screen",
+    "body": "Screen(in=$1, load=$2, address=$3, out=$4);$0",
+    "description": "Screen memory map (built-in)"
+  },
+  "Xor(a, b, out)": {
+    "prefix": "Xor",
+    "body": "Xor(a=$1, b=$2, out=$3);$0",
+    "description": "Xor gate"
+  }
+}

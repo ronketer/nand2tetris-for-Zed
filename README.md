@@ -13,6 +13,7 @@ Since this extension is purely declarative, it does not contain any Rust compila
 ## Features
 
 - **Tree-sitter Syntax Highlighting**: Accurate, semantic syntax highlighting using community-maintained Tree-sitter parsers.
+- **Intelligent Autocompletion (Snippets)**: Quick and accurate autocomplete suggestions for all 37 core Hack chips. Each suggestion displays the parameter signature (inputs and outputs) in the completion dropdown and expands into a tab-traversable template (automatically ending with a semicolon).
 - **Auto-Comments Toggle**: Toggle line comments using your standard editor keybindings (`Ctrl-/` or `Cmd-/`).
 - **File Suffix Association**: Automatically detects and applies syntax rules to `.hdl`, `.asm`, and `.jack` files.
 
@@ -22,7 +23,9 @@ Since this extension is purely declarative, it does not contain any Rust compila
 
 ```text
 nand2tetris-for-Zed/
-├── extension.toml          # Extension manifest (defines repositories and revisions)
+├── extension.toml          # Extension manifest (defines repositories, revisions, and snippets)
+├── snippets/
+│   └── hdl.json            # Autocomplete snippets with parameter signatures for the Hack chip set
 ├── languages/
 │   ├── hack-assembly/
 │   │   ├── config.toml     # File suffix mapping and comment symbols for Hack ASM
