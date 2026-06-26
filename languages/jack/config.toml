@@ -2,3 +2,4 @@ name = "Jack"
 grammar = "jack"
 path_suffixes = ["jack"]
 line_comments = ["// "]
+block_comment = ["/*", "*/"]

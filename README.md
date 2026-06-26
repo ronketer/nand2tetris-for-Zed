@@ -25,21 +25,26 @@ Since this extension is purely declarative, it does not contain any Rust compila
 nand2tetris-for-Zed/
 ├── extension.toml          # Extension manifest (defines repositories, revisions, and snippets)
 ├── snippets/
-│   └── hdl.json            # Autocomplete snippets with parameter signatures for the Hack chip set
+│   ├── hdl.json            # Autocomplete snippets with parameter signatures for the Hack chip set
+│   └── jack.json           # Autocomplete snippets for Jack class, method, and statement boilerplate
 ├── languages/
 │   ├── hack-assembly/
 │   │   ├── config.toml     # File suffix mapping and comment symbols for Hack ASM
 │   │   └── highlights.scm  # Highlight query for instructions, registers, and labels
 │   ├── hdl/
 │   │   ├── config.toml     # File suffix mapping and comment symbols for HDL
-│   │   └── highlights.scm  # Highlight query for chips, inputs, outputs, and connections
+│   │   ├── highlights.scm  # Highlight query for chips, inputs, outputs, and connections
+│   │   ├── outline.scm     # Outline query — chip names appear in breadcrumbs and Go to Symbol
+│   │   └── indents.scm     # Indentation rules for chip body braces
 │   └── jack/
 │       ├── config.toml     # File suffix mapping and comment symbols for Jack
-│       └── highlights.scm  # Highlight query for classes, methods, parameters, and expressions
-├── tests/
-│   ├── test.hdl            # Sample XOR gate to test HDL highlighting
-│   ├── test.asm            # Sample multiplication loop to test Hack Assembly highlighting
-│   └── test.jack           # Sample class to test Jack highlighting
+│       ├── highlights.scm  # Highlight query for classes, methods, parameters, and expressions
+│       ├── outline.scm     # Outline query — class and subroutine names in breadcrumbs
+│       └── indents.scm     # Indentation rules for class, method, and control flow braces
+├── examples/
+│   ├── test.hdl            # Sample XOR gate for verifying HDL highlighting
+│   ├── test.asm            # Sample multiplication loop for verifying Hack Assembly highlighting
+│   └── test.jack           # Sample class for verifying Jack highlighting
 └── README.md
 ```
 

@@ -1,0 +1,57 @@
+{
+  "class": {
+    "prefix": "class",
+    "body": "class ${1:ClassName} {\n\n    constructor ${1:ClassName} new(${2}) {\n        $0\n        return this;\n    }\n\n    method void dispose() {\n        do Memory.deAlloc(this);\n        return;\n    }\n}",
+    "description": "Jack class skeleton with constructor and dispose"
+  },
+  "constructor": {
+    "prefix": "constructor",
+    "body": "constructor ${1:ClassName} ${2:new}(${3}) {\n    $0\n    return this;\n}",
+    "description": "Jack constructor declaration"
+  },
+  "function": {
+    "prefix": "function",
+    "body": "function ${1:void} ${2:name}(${3}) {\n    $0\n    return${4};\n}",
+    "description": "Jack function declaration"
+  },
+  "method": {
+    "prefix": "method",
+    "body": "method ${1:void} ${2:name}(${3}) {\n    $0\n    return${4};\n}",
+    "description": "Jack method declaration"
+  },
+  "var": {
+    "prefix": "var",
+    "body": "var ${1:int} ${2:name};$0",
+    "description": "Local variable declaration"
+  },
+  "let": {
+    "prefix": "let",
+    "body": "let ${1:name} = ${2:value};$0",
+    "description": "Let assignment statement"
+  },
+  "do": {
+    "prefix": "do",
+    "body": "do ${1:Class}.${2:method}(${3});$0",
+    "description": "Do call statement"
+  },
+  "if": {
+    "prefix": "if",
+    "body": "if (${1:condition}) {\n    $0\n}",
+    "description": "If statement"
+  },
+  "ifelse": {
+    "prefix": "ifelse",
+    "body": "if (${1:condition}) {\n    $0\n} else {\n    \n}",
+    "description": "If-else statement"
+  },
+  "while": {
+    "prefix": "while",
+    "body": "while (${1:condition}) {\n    $0\n}",
+    "description": "While loop"
+  },
+  "return": {
+    "prefix": "return",
+    "body": "return ${1:value};$0",
+    "description": "Return statement"
+  }
+}

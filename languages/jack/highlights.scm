@@ -42,8 +42,9 @@
 ; Class declaration name
 (class_declaration name: (identifier) @type)
 
-; Subroutine declaration name
+; Subroutine declaration name and return type
 (subroutine_declaration name: (identifier) @function)
+(subroutine_declaration type: (type) @type)
 
 ; Subroutine parameters — no field names on `parameter` node
 (parameter (type) @type)
@@ -68,8 +69,8 @@
 ; Array Subscripts
 (subscript_expression object: (identifier) @variable)
 
-; Left-hand side assignment variables
-(let_statement (identifier) @variable)
+; Left-hand side assignment variable (direct assignment only, not subscript targets)
+(let_statement . (identifier) @variable)
 
 ; Brackets and Punctuation
 [
