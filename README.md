@@ -1,77 +1,50 @@
 # Nand2Tetris for Zed
 
-A lightweight, pure-declarative language extension for the **Zed** editor that adds support and syntax highlighting for all three languages featured in the **Nand2Tetris** (The Elements of Computing Systems) curriculum:
+A declarative Zed extension for the languages used in Nand2Tetris: HDL (`.hdl`), Hack assembly (`.asm`) and Jack (`.jack`). It adds language configuration and Tree-sitter queries using community parsers.
 
-- **HDL (`.hdl`)**: Hardware Description Language used for gate-level hardware designs.
-- **Hack Assembly (`.asm`)**: Low-level symbolic assembly for the Hack CPU.
-- **Jack (`.jack`)**: High-level, Java-like object-oriented programming language.
+## Current scope
 
-Since this extension is purely declarative, it does not contain any Rust compilation overhead, making it load instantly in the Zed editor.
+- File associations, comment configuration and syntax highlighting for the three languages.
+- Outline and indentation queries for HDL and Jack.
+- HDL chip snippets registered by `extension.toml`.
+- Small example files for manual development checks.
 
----
+`snippets/jack.json` is present in the repository but is not registered in the current manifest, so Jack snippets are not advertised as an enabled feature. There is no language server, compiler, simulator or semantic diagnostics implementation. Tree-sitter highlighting does not establish semantic correctness.
 
-## Features
+## Installation status
 
-- **Tree-sitter Syntax Highlighting**: Accurate, semantic syntax highlighting using community-maintained Tree-sitter parsers.
-- **Intelligent Autocompletion (Snippets)**: Quick and accurate autocomplete suggestions for all 37 core Hack chips. Each suggestion displays the parameter signature (inputs and outputs) in the completion dropdown and expands into a tab-traversable template (automatically ending with a semicolon).
-- **Auto-Comments Toggle**: Toggle line comments using your standard editor keybindings (`Ctrl-/` or `Cmd-/`).
-- **File Suffix Association**: Automatically detects and applies syntax rules to `.hdl`, `.asm`, and `.jack` files.
+The [Zed registry submission](https://github.com/zed-industries/extensions/pull/6508) is open and unmerged as of October 15, 2026. Use a development installation; registry availability and download counts are not claimed.
 
----
-
-## Directory Structure
-
-```text
-nand2tetris-for-Zed/
-├── extension.toml          # Extension manifest (defines repositories, revisions, and snippets)
-├── snippets/
-│   ├── hdl.json            # Autocomplete snippets with parameter signatures for the Hack chip set
-│   └── jack.json           # Autocomplete snippets for Jack class, method, and statement boilerplate
-├── languages/
-│   ├── hack-assembly/
-│   │   ├── config.toml     # File suffix mapping and comment symbols for Hack ASM
-│   │   └── highlights.scm  # Highlight query for instructions, registers, and labels
-│   ├── hdl/
-│   │   ├── config.toml     # File suffix mapping and comment symbols for HDL
-│   │   ├── highlights.scm  # Highlight query for chips, inputs, outputs, and connections
-│   │   ├── outline.scm     # Outline query — chip names appear in breadcrumbs and Go to Symbol
-│   │   └── indents.scm     # Indentation rules for chip body braces
-│   └── jack/
-│       ├── config.toml     # File suffix mapping and comment symbols for Jack
-│       ├── highlights.scm  # Highlight query for classes, methods, parameters, and expressions
-│       ├── outline.scm     # Outline query — class and subroutine names in breadcrumbs
-│       └── indents.scm     # Indentation rules for class, method, and control flow braces
-├── examples/
-│   ├── test.hdl            # Sample XOR gate for verifying HDL highlighting
-│   ├── test.asm            # Sample multiplication loop for verifying Hack Assembly highlighting
-│   └── test.jack           # Sample class for verifying Jack highlighting
-└── README.md
+```bash
+git clone https://github.com/ronketer/nand2tetris-for-Zed.git
 ```
 
----
+In Zed, open the command palette, choose `extensions: install dev extension`, and select the repository root. Parser acquisition requires access to the grammar repositories. This extension contains no custom Rust implementation, but its Tree-sitter grammars still need to be acquired and loaded by Zed.
 
-## Tree-sitter Grammars Used
+## Implementation and attribution
 
-The extension registers the following open-source Tree-sitter grammars:
+The project integrates language settings, highlight/outline/indent queries and snippets. It does not implement the parsers below.
 
-| Language | Repository | Target Grammar Name |
-| :--- | :--- | :--- |
-| **HDL** | [quantonganh/tree-sitter-hdl](https://github.com/quantonganh/tree-sitter-hdl) | `hdl` |
-| **Hack Assembly** | [soconnor0919/tree-sitter-hack-assembly](https://github.com/soconnor0919/tree-sitter-hack-assembly) | `hack_assembly` |
-| **Jack** | [nverno/tree-sitter-jack](https://github.com/nverno/tree-sitter-jack) | `jack` |
+| Language | Community grammar | Pinned revision |
+| --- | --- | --- |
+| HDL | [quantonganh/tree-sitter-hdl](https://github.com/quantonganh/tree-sitter-hdl) | `2199fdf1d302100a53002ea2cf540999119836a0` |
+| Hack assembly | [soconnor0919/tree-sitter-hack-assembly](https://github.com/soconnor0919/tree-sitter-hack-assembly) | `a2442f53ea27dc112b6774cb79504a0787a21919` |
+| Jack | [nverno/tree-sitter-jack](https://github.com/nverno/tree-sitter-jack) | `1a617413ea92c237bff4cbe7fa67eb3bf4425596` |
 
----
+The authoritative configuration is [extension.toml](extension.toml). Grammar projects retain their own authorship and licenses. Nand2Tetris is the associated educational curriculum, not a parser or course authored by this extension project.
 
-## How to Install (Local Development)
+## Manual validation
 
-To run and test this extension locally in Zed:
+No automated validation suite is committed. After installing the development extension:
 
-1. Clone this repository to your local system:
-   ```bash
-   git clone https://github.com/ronketer/nand2tetris-for-Zed.git
-   ```
-2. Open **Zed**.
-3. Open the Command Palette (`Ctrl-Shift-P` on Windows/Linux or `Cmd-Shift-P` on macOS).
-4. Select `extensions: install dev extension`.
-5. Choose the root folder of this project (`nand2tetris-for-ZED`).
-6. Zed will instantly load the extension, download the registered Tree-sitter parsers, and apply syntax highlighting to any open `.hdl`, `.asm`, or `.jack` files.
+1. Open each file under `examples/` and confirm its language association and highlighting.
+2. In HDL and Jack, inspect indentation and the symbol outline.
+3. Try the configured comment shortcut for all three languages.
+4. In HDL, expand a chip snippet and inspect parameter placeholders and the terminator.
+5. Check Zed's logs for grammar/query errors and record the Zed version and platform with any bug report.
+
+These are suggested smoke checks, not a claim that they passed during this audit. Use original non-solution fixtures for future tests rather than publishing additional course answers.
+
+## License
+
+Extension code is MIT-licensed; see [LICENSE](LICENSE). Third-party grammar and educational-material terms remain separate.
