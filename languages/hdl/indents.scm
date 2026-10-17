@@ -1,2 +1,3 @@
-[ "{" ] @indent
-[ "}" ] @end
+(chip_definition
+  "{" @start
+  "}"? @end) @indent

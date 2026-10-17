@@ -6,10 +6,10 @@ A declarative Zed extension for the languages used in Nand2Tetris: HDL (`.hdl`),
 
 - File associations, comment configuration and syntax highlighting for the three languages.
 - Outline and indentation queries for HDL and Jack.
-- HDL chip snippets registered by `extension.toml`.
+- HDL chip snippets and Jack boilerplate snippets registered by `extension.toml`.
 - Small example files for manual development checks.
 
-`snippets/jack.json` is present in the repository but is not registered in the current manifest, so Jack snippets are not advertised as an enabled feature. There is no language server, compiler, simulator or semantic diagnostics implementation. Tree-sitter highlighting does not establish semantic correctness.
+There is no language server, compiler, simulator or semantic diagnostics implementation. Tree-sitter highlighting does not establish semantic correctness.
 
 ## Installation status
 
@@ -40,7 +40,7 @@ No automated validation suite is committed. After installing the development ext
 1. Open each file under `examples/` and confirm its language association and highlighting.
 2. In HDL and Jack, inspect indentation and the symbol outline.
 3. Try the configured comment shortcut for all three languages.
-4. In HDL, expand a chip snippet and inspect parameter placeholders and the terminator.
+4. In HDL and Jack, expand a snippet and inspect parameter placeholders and the terminator.
 5. Check Zed's logs for grammar/query errors and record the Zed version and platform with any bug report.
 
 These are suggested smoke checks, not a claim that they passed during this audit. Use original non-solution fixtures for future tests rather than publishing additional course answers.

@@ -6,7 +6,8 @@ authors = ["Ron Keter <ron.j.keter@gmail.com>"]
 description = "Zed language extension for Nand2Tetris, providing Tree-sitter configurations and syntax highlighting for HDL (.hdl), Hack Assembly (.asm), and Jack (.jack)."
 repository = "https://github.com/ronketer/nand2tetris-for-Zed"
 snippets = [
-    "snippets/hdl.json"
+    "snippets/hdl.json",
+    "snippets/jack.json"
 ]
 
 [grammars.hdl]
