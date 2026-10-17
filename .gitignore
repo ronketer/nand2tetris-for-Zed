@@ -1,2 +1,4 @@
 /target
 /grammars
+/.venv
+__pycache__/

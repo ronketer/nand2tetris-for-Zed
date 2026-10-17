@@ -1,0 +1,6 @@
+/* A small comment regression fixture, not a chip implementation. */
+CHIP Sample {
+    IN a;
+    OUT out;
+    PARTS:
+}

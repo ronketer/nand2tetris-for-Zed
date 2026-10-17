@@ -1,0 +1,6 @@
+CHIP Sample {
+    IN a;
+    OUT out;
+    PARTS:
+    SamplePart(in[0]=a, out[0]=out);
+}

@@ -11,12 +11,12 @@
   },
   "function": {
     "prefix": "function",
-    "body": "function ${1:void} ${2:name}(${3}) {\n    $0\n    return${4};\n}",
+    "body": "function ${1:void} ${2:name}(${3}) {\n    $0\n    return ${4};\n}",
     "description": "Jack function declaration"
   },
   "method": {
     "prefix": "method",
-    "body": "method ${1:void} ${2:name}(${3}) {\n    $0\n    return${4};\n}",
+    "body": "method ${1:void} ${2:name}(${3}) {\n    $0\n    return ${4};\n}",
     "description": "Jack method declaration"
   },
   "var": {

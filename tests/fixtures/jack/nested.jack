@@ -1,0 +1,11 @@
+class Sample {
+    function void run() {
+        if (true) {
+            while (false) {
+                return;
+            }
+        } else {
+            return;
+        }
+    }
+}

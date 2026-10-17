@@ -1,0 +1,6 @@
+CHIP Sample {
+    IN bus[16];
+    OUT out;
+    PARTS:
+    SamplePart(in=bus[0..7], out=out);
+}
