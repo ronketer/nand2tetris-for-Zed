@@ -3,7 +3,7 @@ name = "Nand2Tetris"
 version = "0.1.0"
 schema_version = 1
 authors = ["Ron Keter <ron.j.keter@gmail.com>"]
-description = "Zed language extension for Nand2Tetris, providing Tree-sitter configurations and syntax highlighting for HDL (.hdl), Hack Assembly (.asm), and Jack (.jack)."
+description = "Syntax highlighting, outline and snippets for the Nand2Tetris languages: HDL, Hack assembly and Jack."
 repository = "https://github.com/ronketer/nand2tetris-for-Zed"
 snippets = [
     "snippets/hdl.json",

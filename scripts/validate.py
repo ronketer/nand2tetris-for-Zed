@@ -174,7 +174,8 @@ class ExtensionTests(unittest.TestCase):
     def test_expected_highlights_and_outline_names(self):
         expectations = {
             "HDL": {"type": {"Xor"}, "function": {"Not", "And", "Or"}, "keyword": {"CHIP", "PARTS"}},
-            "Hack Assembly": {"label": {"LOOP", "END"}, "keyword": {"JEQ", "JGT", "JMP"}},
+            "Hack Assembly": {"label": {"LOOP", "END"}, "keyword": {"JEQ", "JGT", "JMP"},
+                              "constant.builtin": {"R0", "R1", "R2"}},
             "Jack": {"type": {"Main"}, "function": {"main", "printString", "println"}},
         }
         for name, (_, config) in self.configs.items():
@@ -184,9 +185,30 @@ class ExtensionTests(unittest.TestCase):
                 with self.subTest(language=name, capture=capture):
                     actual = {node.text.decode() for node in captures.get(capture, [])}
                     self.assertTrue(expected <= actual, (expected, actual))
-            if name in {"HDL", "Jack"}:
-                names = {node.text.decode() for node in self.captures(name, "outline.scm", tree)["name"]}
-                self.assertEqual(names, {"Xor"} if name == "HDL" else {"Main", "main"})
+            names = {node.text.decode() for node in self.captures(name, "outline.scm", tree)["name"]}
+            self.assertEqual(names, {"HDL": {"Xor"}, "Jack": {"Main", "main"}, "Hack Assembly": {"LOOP", "END"}}[name])
+
+    def test_block_comment_delimiters_parse(self):
+        # Toggling a block comment must produce code the grammar accepts.
+        for name, (_, config) in self.configs.items():
+            if "block_comment" in config:
+                start, end = config["block_comment"]
+                source = (ROOT / "examples" / f"test.{config['path_suffixes'][0]}").read_text(encoding="utf-8")
+                with self.subTest(language=name):
+                    self.parse(name, f"{start}commented out{end}\n{source}")
+
+    def test_bracket_config(self):
+        # Mirrors Zed: every not_in scope must be a capture in overrides.scm.
+        for name, (folder, config) in self.configs.items():
+            overrides = folder / "overrides.scm"
+            scopes = set()
+            if overrides.exists():
+                query = Query(self.languages[name], overrides.read_text(encoding="utf-8"))
+                scopes = {query.capture_name(i).removesuffix(".inclusive") for i in range(query.capture_count)}
+            for pair in config.get("brackets", []):
+                with self.subTest(language=name, bracket=pair.get("start")):
+                    self.assertTrue({"start", "end", "close", "newline"} <= pair.keys(), pair)
+                    self.assertTrue(set(pair.get("not_in", [])) <= scopes, (pair, scopes))
 
     def test_snippet_expansions(self):
         for file in self.manifest["snippets"]:

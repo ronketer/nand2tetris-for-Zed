@@ -5,7 +5,8 @@ A declarative Zed extension for the languages used in Nand2Tetris: HDL (`.hdl`),
 ## Current scope
 
 - File associations, comment configuration and syntax highlighting for the three languages.
-- Outline and indentation queries for HDL and Jack.
+- Outline for all three languages (chips, classes and subroutines, Hack labels).
+- Auto-closing brackets for all three languages, plus bracket matching and auto-indent for HDL and Jack.
 - HDL chip snippets and Jack boilerplate snippets registered by `extension.toml`.
 - Small example files for manual development checks.
 
@@ -24,6 +25,20 @@ In Zed, choose `zed: install dev extension` from the command palette (or **Insta
 Zed needs network access to the grammar repositories and downloads the `wasi-sdk` to compile their Tree-sitter parsers. To use an existing SDK, set `WASI_SDK_PATH` to its root directory. This extension has no custom Rust implementation. See [Zed's development guide](https://zed.dev/docs/extensions/developing-extensions) for toolchain setup.
 
 For installation or grammar errors, run `zed: open log`. You can also launch Zed from a terminal with `zed --foreground` for more logging.
+
+## Other assembly extensions and `.asm` files
+
+Hack assembly files use the `.asm` extension, which other Zed extensions (such as [Assembly](https://github.com/DevBlocky/zed-asm)) also claim. If you have more than one installed, choose the language with Zed's [`file_types`](https://zed.dev/docs/configuring-languages) setting. For example, in the `.zed/settings.json` of your Nand2Tetris projects folder:
+
+```json
+{
+  "file_types": {
+    "Hack Assembly": ["asm"]
+  }
+}
+```
+
+You can also select the language for a single file with `language selector: toggle` in the command palette.
 
 ## Implementation and attribution
 
@@ -62,7 +77,7 @@ The packaging command downloads the CLI and build dependencies, reports its temp
 
 The pinned upstream HDL parser currently rejects these syntax forms:
 
-- Ordinary `/* ... */` comments (including the block-comment delimiter configured for HDL).
+- Ordinary `/* ... */` comments. `/** ... */` comments parse, so the HDL block-comment toggle uses `/** ` and ` */`.
 - Indexed part pins such as `SamplePart(in[0]=a, out[0]=out);`.
 - Bus-range connections such as `SamplePart(in=bus[0..7], out=out);`.
 

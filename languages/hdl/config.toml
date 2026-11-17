@@ -2,4 +2,10 @@ name = "HDL"
 grammar = "hdl"
 path_suffixes = ["hdl"]
 line_comments = ["// "]
-block_comment = ["/*", "*/"]
+# The pinned grammar only parses /** ... */ block comments.
+block_comment = ["/** ", " */"]
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "[", end = "]", close = true, newline = false },
+]
