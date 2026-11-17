@@ -2,8 +2,6 @@ name = "Hack Assembly"
 grammar = "hack_assembly"
 path_suffixes = ["asm"]
 line_comments = ["// "]
-# Symbols such as LOOP.END and Main.f$ret:1 count as one word.
-word_characters = [".", "$", ":"]
 brackets = [
     { start = "(", end = ")", close = true, newline = false },
 ]
